@@ -37,6 +37,8 @@ let userChoice = '';
 document.getElementById("play-button").addEventListener('click', game);
 
 function game() {
+    const bombsQuantity = 16
+
     // prendo la scelta di difficoltà dell'utente
     userChoice = document.querySelector('.choice-list').value;
     const grid = document.querySelector('.grid');
@@ -66,7 +68,12 @@ function game() {
     }
 
     // Genero 16 bombe
-    // const bombsArray = [];
+    const bombsArray = generateBombs(squareQuantity, bombsQuantity);
+
+    // calcolo il numero massimo di tentativi
+    const maxTry = squareQuantity - bombsArray.length;
+
+    
 
     // Creo un elemento e un numero per ogni square
     for (let i = 1; i <= squareQuantity; i++) {
@@ -104,20 +111,19 @@ function handleCellClick() {
 // numberOfBombs = numero di bombe da generare
 // return: array completo con le bombe
 function generateBombs(maxBombRange, numberOfBombs) {
-    const bombsArray = [];
-    while( bombsArray.length < numberOfBombs ) {
+    const arrayBombs = [];
+    while( arrayBombs.length < numberOfBombs ) {
         const randomNumber = getRndInteger(1, maxBombRange);
 
-        if(!bombsArray.includes(randomNumber)) {
-            bombsArray.push(randomNumber);
+        if(!arrayBombs.includes(randomNumber)) {
+            arrayBombs.push(randomNumber);
         }
     }
 
-    console.log(bombsArray)
+    return arrayBombs;
 }
 
 let test = generateBombs(100, 16);
-
 
 
 // Questa funzione serve a generare numeri casuali da un min a un max 
