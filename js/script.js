@@ -73,7 +73,8 @@ function game() {
     // calcolo il numero massimo di tentativi
     const maxTry = squareQuantity - bombsArray.length;
 
-    
+    // Creo un array vuoto che contiene i numeri non bombe azzeccati dall'utente
+    const rightTryArray= [];
 
     // Creo un elemento e un numero per ogni square
     for (let i = 1; i <= squareQuantity; i++) {
@@ -103,7 +104,9 @@ function game() {
 // FUNCTION
 function handleCellClick() {
     // Al click dello square aggiungo la class del colore
-    this.classList.add('bkg-cyan');
+    // this.classList.add('bkg-cyan');
+    const clickedNumber = parseInt(this.querySelector('span').textContent);
+    console.log(clickedNumber)
 }
 
 //  Genera un array di bombe
