@@ -43,7 +43,12 @@ function game() {
     userChoice = document.querySelector('.choice-list').value;
     const grid = document.querySelector('.grid');
     grid.classList.remove('hidden');
+
+    // Svuoto la griglia dagli squares precedenti
     grid.innerHTML = '';
+
+    // Svuoto il messaggio vecchio
+    document.getElementById("result-message").classList.add('hidden');
 
     const gameTitle = document.getElementById("game-title")
     gameTitle.classList.add('hidden');
@@ -134,16 +139,27 @@ function game() {
         let finalMessage;
         if(result === 'win'){
             // se vince
-            finalMessage = 'hai vinto';
+            finalMessage = 'Hai vinto! : )';
         } else {
             // se perde
-            finalMessage = 'hai perso, hai azzeccato ' + rightTryArray.length + ' tentativi';
+            finalMessage = 'Hai perso! : ( Hai azzeccato ' + rightTryArray.length + ' tentativi';
         }
 
         // Messaggio finale alla fine della partita
         const finalResultMessage = document.getElementById('result-message')
         finalResultMessage.innerHTML = finalMessage;
         finalResultMessage.classList.remove('hidden');
+
+        // Metto le celle non più cliccabili
+        const allSquares = document.getElementsByClassName('square');
+        for( let i = 0; i < allSquares.length; i++) {
+            const thisSquare = allSquares[i];
+            thisSquare.style.pointerEvents = 'none';
+
+            if (bombsArray.includes(i)) {
+                thisSquare.classList.add('bomb');
+            }
+        }
     }
 
 }
