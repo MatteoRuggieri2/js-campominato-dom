@@ -109,15 +109,42 @@ function game() {
 
         // se il numero è una bomba diventa rosso e il gioco finisce
         if( bombsArray.includes(clickedNumber) ) {
-            this.classList.add('bomb')
-            alert('gioco finito')
+            this.classList.add('bomb');
+            endGame('lose');
+
         } else {
             // la cella divenza azzurra e non pèiù cliccabile
             this.classList.add('bkg-cyan')
+            this.style.pointerEvents = 'none';
+
+            // il numero selezionato lo aggiungiamo all'array che contiene i numeri non bombe
+            rightTryArray.push(clickedNumber);
+            console.log(rightTryArray);
+
+            // se i numeri azzeccati sono uguali ai tentativi massimi il gioco finisce
+            if(rightTryArray.length >= maxTry) {
+                endGame('win');
+            }
+            
         }
         
     }
 
+    function endGame(result) {
+        let finalMessage;
+        if(result === 'win'){
+            // se vince
+            finalMessage = 'hai vinto';
+        } else {
+            // se perde
+            finalMessage = 'hai perso, hai azzeccato ' + rightTryArray.length + ' tentativi';
+        }
+
+        // Messaggio finale alla fine della partita
+        const finalResultMessage = document.getElementById('result-message')
+        finalResultMessage.innerHTML = finalMessage;
+        finalResultMessage.classList.remove('hidden');
+    }
 
 }
 // FUNCTION
