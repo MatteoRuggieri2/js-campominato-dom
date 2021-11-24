@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-campominato-dom</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- APP CONTAINER -->
+    <div class="app-container">
+
+        <!-- HEADER -->
+        <header>
+
+            <!-- Header Left -->
+            <div class="header-left">
+                <img src="img/logo.png" alt="logo">
+                <h1>Campo Minato: la Griglia</h1>
+            </div>
+
+            <!-- Header Right -->
+            <div class="header-right">
+
+                <!-- Select -->
+                <label for="choice">Difficoltà:</label>
+                <select class="choice-list" name="choice" id="choice">
+                    <option value="easy">Easy</option>
+                    <option value="hard">Hard</option>
+                    <option value="crazy">Crazy</option>
+                </select>
+
+                <!-- Play Button -->
+                <input id="play-button" type="button" value="Play">
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main>
+
+            <h2 id="game-title" class="">Seleziona il livello di difficoltà e genera la griglia</h2>
+
+            <!-- Game Grid -->
+            <div class="grid hidden">
+
+                <!-- square
+                <div class="square square-7 active">
+                    <span>1</span>
+                </div> -->
+
+            </div>
+        </main>
+
+        <footer>
+            <span>Made with &hearts; by <a href="https://www.boolean.careers/" target="_blank">Boolean</a></span>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
