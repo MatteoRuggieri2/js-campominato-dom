@@ -69,6 +69,7 @@ function game() {
 
     // Genero 16 bombe
     const bombsArray = generateBombs(squareQuantity, bombsQuantity);
+    console.log(bombsArray)
 
     // calcolo il numero massimo di tentativi
     const maxTry = squareQuantity - bombsArray.length;
@@ -99,15 +100,27 @@ function game() {
         newBox.addEventListener('click', handleCellClick);
     }
 
+    // Funzioni legate al DOM
+    function handleCellClick() {
+        // Al click dello square aggiungo la class del colore e prendo il valore
+        // this.classList.add('bkg-cyan');
+        // leggo il numero della cella
+        const clickedNumber = parseInt(this.querySelector('span').textContent);
+
+        // se il numero è una bomba diventa rosso e il gioco finisce
+        if( bombsArray.includes(clickedNumber) ) {
+            this.classList.add('bomb')
+            alert('gioco finito')
+        } else {
+            // la cella divenza azzurra e non pèiù cliccabile
+            this.classList.add('bkg-cyan')
+        }
+        
+    }
+
 
 }
 // FUNCTION
-function handleCellClick() {
-    // Al click dello square aggiungo la class del colore
-    // this.classList.add('bkg-cyan');
-    const clickedNumber = parseInt(this.querySelector('span').textContent);
-    console.log(clickedNumber)
-}
 
 //  Genera un array di bombe
 // maxBombRange = al numero di bombe () ad esempio da 1 a 100

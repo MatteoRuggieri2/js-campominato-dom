@@ -98,6 +98,11 @@ footer{
     color: white;
 }
 
+.bomb{
+    background-color: red;
+    color: black;
+}
+
 .square-10{
     width: calc(100% / 10);
     height: calc(100% / 10);
