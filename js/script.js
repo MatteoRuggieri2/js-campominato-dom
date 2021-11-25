@@ -22,17 +22,6 @@
 
 // --------------------------------------
 
-
-
-// Creo le bombe (array di 16 numeri non duplicati compresi tra 1 e squareQuantity)
-// Cacolo il numero massimo di tentativi dopo il quale l'utente ha vinto (squareQuantity - lunghezza array bombe, quindi 16)
-// creo un array vuoto che contiene i numeri non bombe che l'utente ha preso al click
-
-
-
-// --------------------------------------
-
-
 let userChoice = '';
 document.getElementById("play-button").addEventListener('click', game);
 
@@ -74,7 +63,6 @@ function game() {
 
     // Genero 16 bombe
     const bombsArray = generateBombs(squareQuantity, bombsQuantity);
-    console.log(bombsArray)
 
     // calcolo il numero massimo di tentativi
     const maxTry = squareQuantity - bombsArray.length;
@@ -108,7 +96,6 @@ function game() {
     // Funzioni legate al DOM
     function handleCellClick() {
         // Al click dello square aggiungo la class del colore e prendo il valore
-        // this.classList.add('bkg-cyan');
         // leggo il numero della cella
         const clickedNumber = parseInt(this.querySelector('span').textContent);
 
@@ -124,7 +111,6 @@ function game() {
 
             // il numero selezionato lo aggiungiamo all'array che contiene i numeri non bombe
             rightTryArray.push(clickedNumber);
-            console.log(rightTryArray);
 
             // se i numeri azzeccati sono uguali ai tentativi massimi il gioco finisce
             if(rightTryArray.length >= maxTry) {
@@ -156,7 +142,9 @@ function game() {
             const thisSquare = allSquares[i];
             thisSquare.style.pointerEvents = 'none';
 
-            if (bombsArray.includes(i)) {
+            // Rivelo tutte le bombe a fine game
+            const cellNumber = parseInt(thisSquare.querySelector('span').textContent);
+            if (bombsArray.includes(cellNumber)) {
                 thisSquare.classList.add('bomb');
             }
         }
